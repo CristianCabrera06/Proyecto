@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voz</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+</head>
+
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
+    </div>
+    <header>
+       
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="img/logo.png" alt="">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <a href="#" id="" class="btn-header">Dictado</a>
+                    <a href="#" id="" class="btn-header">Texto</a>
+                    <a href="#" id="" class="btn-header">Instrucciones</a>
+                    
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776;</span>
+                </div>
+            </div>
+        </nav>
+       
+
+
+        <div class="textos">
+           <script src="script.js"></script>
+            <h2>Asistente de Voz</h2>
+            <h3>Bienvenido</h3>
+        <input type="text" id="texto1">
+	<input type="button" id="hablar" value="Escuchar">
+        </div>
+        
+<script src="script1.js"></script>
+   
+    </header>
+    <main>
+        <section class="team contenedor" id="equipo">
+            <h3>Equipo de Trabajo</h3>
+            <p class="after"> ""</p>
+            <div class="card">
+                <div class="content-card">
+                    <div class="people">
+                        <img src="img/people1.jpg" alt="">
+                    </div>
+                    <div class="texto-team">
+                        <h4>L</h4>
+                        <p>Luisa A</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="people">
+                        <img src="img/people2.jpg" alt="">
+                    </div>
+                    <div class="texto-team">
+                        <h4>J</h4>
+                        <p>José Ch</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="people">
+                        <img src="img/people3.jpg" alt="">
+                    </div>
+                    <div class="texto-team">
+                        <h4>M</h4>
+                        <p>Martin S</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="people">
+                        <img src="img/people4.jpg" alt="">
+                    </div>
+                    <div class="texto-team">
+                        <h4>C</h4>
+                        <p>Cristian C</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+    </main>
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/filtro.js"></script>
+</body>
+</html>

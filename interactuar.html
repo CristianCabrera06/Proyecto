@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voz</title>
+	 <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+        
+        <script src="jquery-3.1.1.js"></script>
+	<script src="artyom.min.js"></script>
+	<script src="artyomCommands.js"></script>
+	
+	
+</head>
+
+<body class="hidden">
+    <div class="centrado" id="onload">
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
+    </div>
+    <header>
+       
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="img/logo.png" alt="">
+                </div>
+                 <div class="enlaces" id="enlaces">
+                    <a href="voz.html" id="" class="btn-header"><b>Dictado</a></b>
+                    <a href="texto.html" id="" class="btn-header"><b>Texto</a></b>
+                    <a href="creditos.html" id="" class="btn-header"><b>Estudiantes</a></b>
+                    <a href="index.html" id="" class="btn-header"><b>Menú</a></b>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776;</span>
+                </div>
+            </div>
+        </nav>
+       
+
+
+        <div class="textos">
+          <!-- <a class="boton_personalizado" href="https://vinkula.com"> botón</a>-->
+          
+		<div >
+            <input  type="button" class="btn-form"  onclick="startArtyom();" value="Activar">
+			<input type="button" class="btn-form"  onclick="stopArtyom();" value="Desactivar">
+			<input id="salida" style="width: 500px;" />
+		</div>
+
+
+		<!-- Menu -->
+		<div style="float: right;padding: 20px;">
+			<a href="https://www.youtube.com/watch?v=AY3eVlZ7Hew" target="_blank" id="uno">uno</a> | 
+			<a href="https://www.youtube.com/watch?v=AY3eVlZ7Hew" target="_blank" id="dos">dos</a> | 
+			<a href="https://www.youtube.com/watch?v=AY3eVlZ7Hew" target="_blank" id="tres">tres</a> | 
+			<a href="https://www.youtube.com/watch?v=AY3eVlZ7Hew" target="_blank" id="cuatro">cuatro</a> | 
+		</div>
+		<br><br><br>
+
+		  </div>
+        
+
+   
+    </header>
+    
+    <script>
+
+	// $(document).ready(function() {
+$('#bruceotro').click(function(){
+        console.log('guaa');
+        $('#bruce').click();
+ });
+ $('#bruce').click(function(){
+     alert('ya peeee'); 
+ });
+        
+                                            
+		$('#uno').mouseover(function() {
+			artyom.say("enlace 1")
+		});
+
+		$('#uno').mouseout(function() {
+			artyom.shutUp();
+		});
+
+		$('#dos').mouseover(function() {
+			artyom.say("enlace 2")
+		});
+
+		$('#tres').mouseover(function() {
+			artyom.say("enlace 3")
+		});
+
+		$('#cuatro').mouseover(function() {
+			artyom.say("enlace 4")
+		});
+
+		//El sistema responde
+		artyom.addCommands([
+			{
+				indexes:["buenos días",'cuál es tu clase favorita','Saluda a mis compañeros'],
+				action: function(i){
+					if (i==0) {
+						artyom.say("Hola Usuario, buenos dias");
+					}
+					if (i==1) {
+						artyom.say("Me gusta la clase de modelación y simulación, Con el ingenireo Edwin Sac");
+					}
+					if (i==2) {
+						artyom.say("Hola Compañeros, espero les este yendo muy bien. Saludos");
+					}
+				}
+			},
+			{
+				indexes:['me voy','chau'],
+				action: function(){
+					alert('ok, chau');					
+				}
+			},
+			{
+				indexes:['abrir google','abrir facebook', 'abrir youtube','abrir texto a voz'],
+				action: function(i){
+					if (i==0) {
+						artyom.say("Abriendo google");
+						window.open("http://www.google.com",'_blank');
+					}
+					if (i==1) {
+						artyom.say("Abriendo facebook");
+						window.open("https://www.facebook.com/",'_blank');
+					}
+					if (i==2) {
+						artyom.say("Abriendo youtube");
+						window.open("https://www.youtube.com/watch?v=nv3KsPt2cq4",'_blank');
+					}
+                                        
+                    if (i==3) {
+						artyom.say("Abriendo Pestaña Texto a voz");
+						window.open("http://localhost/artyom/textoavoz.html",'_blank');
+					}
+				}
+			},
+			{
+				indexes:['limpiar'],
+				action: function(){
+					$('#salida').val('');
+				}
+			}
+		]); 
+
+		// Escribir lo que escucha.
+		artyom.redirectRecognizedTextOutput(function(text,isFinal){
+			var texto = $('#salida');
+			if (isFinal) {
+				texto.val(text);
+			}else{
+				
+			}
+		});
+
+
+		//inicializamos la libreria Artyom
+		function startArtyom(){
+			artyom.initialize({
+				lang: "es-ES",
+				continuous:true,// Reconoce 1 solo comando y para de escuchar
+	            listen:true, // Iniciar !
+	            debug:true, // Muestra un informe en la consola
+	            speed:1 // Habla normalmente
+			});
+		};
+		
+		// Stop libreria;
+		function stopArtyom(){
+			artyom.fatality();// Detener cualquier instancia previa
+		};
+
+		// leer texto
+		$('#btnLeer').click(function (e) {
+            e.preventDefault();
+            var btn = $('#btnLeer');
+            if (artyom.speechSupported()) {
+                btn.addClass('disabled');
+                btn.attr('disabled', 'disabled');
+
+                var text = $('#leer').val();
+                if (text) {
+                    var lines = $("#leer").val().split("\n").filter(function (e) {
+                        return e
+                    });
+                    var totalLines = lines.length - 1;
+
+                    for (var c = 0; c < lines.length; c++) {
+                        var line = lines[c];
+                        if (totalLines == c) {
+                            artyom.say(line, {
+                                onEnd: function () {
+                                    btn.removeAttr('disabled');
+                                    btn.removeClass('disabled');
+                                }
+                            });
+                        } else {
+                            artyom.say(line);
+                        }
+                    }
+                }
+            } else {
+                alert("Your browser cannot talk !");
+            }
+        });
+
+	// });
+	</script>
+    
+ 
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/filtro.js"></script>
+</body>
+</html>
